@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
+import AddtocartIcon from "./AddtocartIcon";
 
 interface navbar {
   name: string;
@@ -43,7 +44,9 @@ const Navbar = () => {
               </div>
             ))}
           </div>
-          <div>
+
+          <div className="flex flex-row gap-6">
+            <AddtocartIcon />
             <Button className="bg-[#012452] text-[#fefefe] hover:bg-[#fefefe] hover:text-[#012452] transition-all duration-300 ease-in">
               Login
             </Button>

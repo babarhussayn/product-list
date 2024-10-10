@@ -1,17 +1,27 @@
+"use client";
 import React from "react";
 import Data from "../../../data.json";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useAppDispatch } from "@/store/hooks";
+import { add } from "@/store/features/cart/cartSlice";
 
 interface Data {
   name: string;
   image: string;
   category: string;
   price: number;
-  id: number;
+  id: string;
 }
 
 const HomePage = () => {
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = (productsId: string) => {
+    console.log(productsId, "add to cart");
+    dispatch(add(productsId));
+  };
+
   return (
     <>
       <div className="w-full flex justify-center items-center min-h-screen mt-14">
@@ -32,9 +42,12 @@ const HomePage = () => {
                       width={250}
                       height={200}
                     />
-                    <div className="relative">
+                    <div className="relative bg-[#052755]">
                       <div className="absolute translate-x-20 -translate-y-4      flex justify-center items-center shadow-lg">
-                        <Button className="bg-[#fefefe] text-black w-[120px] border border-red-300 rounded-xl hover:bg-[]">
+                        <Button
+                          className="bg-[#fefefe] text-black w-[120px] border border-red-300 rounded-xl hover:bg-[]"
+                          onClick={() => handleAddToCart(item.id)}
+                        >
                           Add To cart
                         </Button>
                       </div>
