@@ -12,6 +12,9 @@ const config: Config = {
       backgroundImage: {
         headerImg: "url(/assets/images/header.jpg)",
       },
+      fontFamily: {
+        playfair: [`var(--font-playfair)`],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

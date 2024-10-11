@@ -27,38 +27,53 @@ const HomePage = () => {
   return (
     <>
       <div className="w-full flex justify-center items-center min-h-screen mt-14">
-        <div className="w-[1200px]  p-4">
+        <div className="w-[1200px]   p-4">
           <div className="flex justify-between items-center flex-wrap gap-4">
             {Data.map((item, index) => (
               <>
                 {/* <Link
-                  href={`pages/products/${item?.id}`}
+                  href={`pages/products/${item?.id}`} 
                   className="hover:border-red-300"
                   key={index}
                 > */}
-                <div className="rounded-lg " key={index}>
-                  <div className="shadow-lg rounded-2xl  bg-orange-300">
-                    <Image
-                      src={item.image.desktop}
-                      alt="img"
-                      width={250}
-                      height={200}
-                      className="hover:border-red-400"
-                    />
-                    <div className="relative  ">
-                      <div className="absolute translate-x-20 -translate-y-4      flex justify-center items-center shadow-lg">
-                        <Button
-                          className="bg-[#fefefe] text-black w-[120px] border border-red-300 rounded-xl "
-                          onClick={() => handleAddToCart(item)}
-                        >
-                          Add To cart
-                        </Button>
-                      </div>
-                      <div className="bg-[#052755] ">
-                        <span className="text-white">{item.category}</span>
-                        <h5 className="text-white">{item.name}</h5>
+                <div className=" " key={index}>
+                  <div className="shadow-lg  rounded-lg">
+                    <div className="mb-6 rounded-lg">
+                      <Image
+                        src={item.image.desktop}
+                        alt="img"
+                        width={250}
+                        height={200}
+                        className="hover:border-red-400 rounded-lg"
+                      />
+                    </div>
+                    <div className="absolute translate-x-20 -translate-y-12 flex justify-center items-center shadow-lg border-none rounded-lg">
+                      <Button
+                        className="bg-[#fefefe] text-black w-[120px]  border border-red-300 rounded-xl font-playfair  "
+                        onClick={() => handleAddToCart(item)}
+                      >
+                        <Image
+                          src="/assets/images/icon-add-to-cart.svg"
+                          alt="Add"
+                          width={100}
+                          height={100}
+                        />{" "}
+                        Add To cart
+                      </Button>
+                    </div>
+                    <div className="">
+                      <div className="p-4 ">
+                        <div className="flex  flex-start  flex-col gap-2 w-full ">
+                          <span className="">{item.category}</span>
+                          <h5 className="font-playfair text-[18px] font-bold">
+                            {item.name}
+                          </h5>
 
-                        <span className="text-white"> $ {item.price}</span>
+                          <span className=" font-playfair text-[20px] text-red-400 font-bold">
+                            {" "}
+                            $ {item.price}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>

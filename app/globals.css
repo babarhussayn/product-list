@@ -76,3 +76,6 @@ body {
     @apply bg-background text-foreground;
   }
 }
+.playfair {
+  font-family: var(--font-playfair);
+}
