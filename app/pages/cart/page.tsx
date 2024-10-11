@@ -3,6 +3,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { Button } from "@/components/ui/button";
 import { remove } from "@/store/features/cart/cartSlice";
+import { useRouter } from "next/navigation";
 
 import {
   Dialog,
@@ -12,8 +13,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import Image from "next/image";
 
 const CartPage = () => {
+  const router = useRouter();
   const dispatch = useAppDispatch();
   const items = useAppSelector((state) => state.cart.items);
 
@@ -65,18 +68,30 @@ const CartPage = () => {
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Order Confirmed</DialogTitle>
+                  <div>
+                    <Image
+                      src="/assets/images/icon-order-confirmed.svg"
+                      alt="confirmed"
+                      width={50}
+                      height={10}
+                    />
+                  </div>
+                  <DialogTitle className="">Order Confirmed</DialogTitle>
                   <DialogDescription>
                     Thank you for your order! We hope you enjoy your food.
-                    <div className="mt-4">
+                    <div className="mt-4 ">
                       <h3 className="font-playfair font-bold text-xl">
                         Order Summary
                       </h3>
                       {items.map((item, index) => (
-                        <div key={index} className="flex justify-between mt-2">
+                        <div
+                          key={index}
+                          className="flex justify-between items-center p-4 mt-2 bg-[#e4dee4ee]"
+                        >
                           <div>
                             <img src={item.image.thumbnail} alt="img" />
                           </div>
+
                           <span>{item.name}</span>
                           <span>${item.price}</span>
                         </div>
@@ -87,6 +102,14 @@ const CartPage = () => {
                           Total: ${totalPrice}
                         </h4>
                       </div>
+                    </div>
+                    <div className="flex justify-center items-center rounded-lg">
+                      <Button
+                        onClick={() => router.push("/pages/home")}
+                        className="bg-[#022452] px-8 py-5 "
+                      >
+                        Start New Order
+                      </Button>
                     </div>
                   </DialogDescription>
                 </DialogHeader>
