@@ -17,6 +17,8 @@ const CartPage = () => {
   const dispatch = useAppDispatch();
   const items = useAppSelector((state) => state.cart.items);
 
+  const totalPrice = items.reduce((acc, item) => acc + item.price, 0);
+
   return (
     <div className="w-full container mx-auto">
       <div className="">
@@ -48,43 +50,51 @@ const CartPage = () => {
                     Remove
                   </Button>
                 </div>
-                <div className="m-2">
-                  <Dialog>
-                    <DialogTrigger className="">
-                      <Button className="bg-[#022452]">Confirm</Button>
-                    </DialogTrigger>
-                    <DialogContent>
-                      <DialogHeader>
-                        <DialogTitle>Order confirmed</DialogTitle>
-                        <DialogDescription>
-                          We hope you enjoye your food
-                          <div className="flex flex-row">
-                            <div className="m-4">
-                              <img src={item.image.thumbnail} alt={item.name} />
-                            </div>
-                            <div className="p-6">
-                              <h3 className="font-playfair font-bold text-xl">
-                                {item.name}
-                              </h3>
-                              <span className="font-playfair text-red-400 text-xl">
-                                Price: ${item.price}
-                              </span>
-                            </div>
-                          </div>
-                        </DialogDescription>
-                      </DialogHeader>
-                    </DialogContent>
-                  </Dialog>
-                </div>
               </div>
             </div>
           ))
         ) : (
           <p>Your cart is empty.</p>
         )}
-      </div>
 
-      {/* Render the confirmation dialog if an item is selected */}
+        {items.length > 0 && (
+          <div className="mt-6 flex justify-center">
+            <Dialog>
+              <DialogTrigger>
+                <Button className="bg-[#022452]">Confirm Order</Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Order Confirmed</DialogTitle>
+                  <DialogDescription>
+                    Thank you for your order! We hope you enjoy your food.
+                    <div className="mt-4">
+                      <h3 className="font-playfair font-bold text-xl">
+                        Order Summary
+                      </h3>
+                      {items.map((item, index) => (
+                        <div key={index} className="flex justify-between mt-2">
+                          <div>
+                            <img src={item.image.thumbnail} alt="img" />
+                          </div>
+                          <span>{item.name}</span>
+                          <span>${item.price}</span>
+                        </div>
+                      ))}
+                      <div className="mt-4 font-bold flex justify-end">
+                        <h4 className="font-playfair font-bold text-2xl">
+                          {" "}
+                          Total: ${totalPrice}
+                        </h4>
+                      </div>
+                    </div>
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
