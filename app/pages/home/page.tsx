@@ -4,7 +4,7 @@ import Data from "../../../data.json";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useAppDispatch } from "@/store/hooks";
-import { add } from "@/store/features/cart/cartSlice";
+import { add, CartItem } from "@/store/features/cart/cartSlice";
 
 interface Data {
   name: string;
@@ -17,11 +17,13 @@ interface Data {
 const HomePage = () => {
   const dispatch = useAppDispatch();
 
-  const handleAddToCart = (productsId: string) => {
-    console.log(productsId, "add to cart");
-    dispatch(add(productsId));
-  };
+  const handleAddToCart = (product: CartItem) => {
+    const { id, name, image, price } = product; // Destructure the product details
+    console.log(id, "add to cart");
 
+    // Dispatch the action with the complete product details
+    dispatch(add({ id, name, image, price }));
+  };
   return (
     <>
       <div className="w-full flex justify-center items-center min-h-screen mt-14">
@@ -35,27 +37,28 @@ const HomePage = () => {
                   key={index}
                 > */}
                 <div className="rounded-lg " key={index}>
-                  <div className="shadow-lg rounded-2xl hover:border-red-300 bg-orange-300">
+                  <div className="shadow-lg rounded-2xl  bg-orange-300">
                     <Image
                       src={item.image.desktop}
                       alt="img"
                       width={250}
                       height={200}
+                      className="hover:border-red-400"
                     />
-                    <div className="relative bg-[#052755]">
+                    <div className="relative  ">
                       <div className="absolute translate-x-20 -translate-y-4      flex justify-center items-center shadow-lg">
                         <Button
-                          className="bg-[#fefefe] text-black w-[120px] border border-red-300 rounded-xl hover:bg-[]"
-                          onClick={() => handleAddToCart(item.id)}
+                          className="bg-[#fefefe] text-black w-[120px] border border-red-300 rounded-xl "
+                          onClick={() => handleAddToCart(item)}
                         >
                           Add To cart
                         </Button>
                       </div>
-                      <div className="bg-[#fefefe]">
-                        <span>{item.category}</span>
-                        <h5>{item.name}</h5>
+                      <div className="bg-[#052755] ">
+                        <span className="text-white">{item.category}</span>
+                        <h5 className="text-white">{item.name}</h5>
 
-                        <span>{item.price}</span>
+                        <span className="text-white"> $ {item.price}</span>
                       </div>
                     </div>
                   </div>

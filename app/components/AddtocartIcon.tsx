@@ -13,7 +13,7 @@ const AddtocartIcon = () => {
         <Link href="/pages/cart">
           <div className="w-[50px] relative">
             <span className="text-white absolute ml-10 top-0 ">
-              {items.length}
+              {items?.length}
             </span>
             <Image
               src="/assets/images/icon-add-to-cart.svg"

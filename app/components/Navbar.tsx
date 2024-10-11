@@ -30,7 +30,7 @@ const navbar = [
 const Navbar = () => {
   return (
     <>
-      <div className="w-full bg-[#012452fb] p-4">
+      <div className="w-full bg-[#012452fb] p-4 fixed z-50 top-0">
         <div className="flex justify-between gap-8 items-center">
           <div>
             <h4 className="font-sans text-lg text-[#fefefe]">logo</h4>

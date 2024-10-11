@@ -1,16 +1,28 @@
+// StoreProvider.tsx
 "use client";
-// import { add } from "@/store/features/cart/cartSlice";
-import { AppStore, makeStore } from "@/store/store";
-import React, { ReactNode, useRef } from "react";
+
+import React, { ReactNode, useMemo } from "react";
 import { Provider } from "react-redux";
-const StoreProvider = ({ children }: { children: ReactNode }) => {
-  const storeRef = useRef<AppStore>();
-  if (!storeRef.current) {
-    // Create the store instance the first time this renders
-    storeRef.current = makeStore();
-    // storeRef.current.dispatch(add(`testid`));
-  }
-  return <Provider store={storeRef.current}>{children}</Provider>;
+
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore, Persistor } from "redux-persist";
+import { makeStore } from "@/store/store";
+
+interface StoreProviderProps {
+  children: ReactNode;
+}
+
+const store = makeStore();
+const StoreProvider = ({ children }: StoreProviderProps) => {
+  const persistor: Persistor = useMemo(() => persistStore(store), []);
+
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        {children}
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default StoreProvider;

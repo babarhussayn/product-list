@@ -12,7 +12,7 @@ const Mainwrapper: FC<MainwrapperProps> = ({ children }) => {
     <>
       <Navbar />
       <Header />
-      <main className="flex">{children}</main>
+      <main className="">{children}</main>
       <Footer />
     </>
   );
