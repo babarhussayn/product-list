@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import AddtocartIcon from "./AddtocartIcon";
+import Image from "next/image";
 
 interface navbar {
   name: string;
@@ -33,7 +34,14 @@ const Navbar = () => {
       <div className="w-full bg-[#012452fb] p-4 fixed z-50 top-0">
         <div className="flex justify-between gap-8 items-center">
           <div>
-            <h4 className="font-sans text-lg text-[#fefefe]">logo</h4>
+            <h4 className="font-sans text-lg text-[#fefefe]">
+              <Image
+                src="/assets/images/favicon.png"
+                alt="ddf"
+                width={100}
+                height={120}
+              />
+            </h4>
           </div>
           <div className=" flex justify-center gap-8 items-center">
             {navbar.map((item, index) => (
