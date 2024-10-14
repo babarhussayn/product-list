@@ -18,11 +18,12 @@ interface Data {
 const HomePage = () => {
   const dispatch = useAppDispatch();
 
-  const handleAddToCart = (product: CartItem) => {
-    const { id, name, image, price, quantity } = product;
+  const handleAddToCart = (product: Omit<CartItem, "quantity">) => {
+    const { id, name, image, price } = product; // Destructure the product details
     console.log(id, "add to cart");
 
-    dispatch(add({ id, name, image, price, quantity }));
+    // Dispatch the action with quantity set to 1
+    dispatch(add({ id, name, image, price, quantity: 1 })); // Set default quantity
   };
   return (
     <>
