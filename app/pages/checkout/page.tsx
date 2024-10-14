@@ -1,6 +1,14 @@
+"use client";
+import { useAppSelector } from "@/store/hooks";
 import React from "react";
 
 const CheckoutPage = () => {
+  const items = useAppSelector((state) => state.cart.items);
+
+  const totalPrice = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
   return (
     <>
       <div>
@@ -1131,9 +1139,7 @@ const CheckoutPage = () => {
                       <dt className="text-base font-normal text-gray-500 dark:text-gray-400">
                         Subtotal
                       </dt>
-                      <dd className="text-base font-medium text-gray-900 dark:text-white">
-                        $8,094.00
-                      </dd>
+                      <dd className="text-base font-medium text-gray-900 dark:text-white"></dd>
                     </dl>
 
                     <dl className="flex items-center justify-between gap-4 py-3">
@@ -1168,7 +1174,7 @@ const CheckoutPage = () => {
                         Total
                       </dt>
                       <dd className="text-base font-bold text-gray-900 dark:text-white">
-                        $8,392.00
+                        {totalPrice}
                       </dd>
                     </dl>
                   </div>
