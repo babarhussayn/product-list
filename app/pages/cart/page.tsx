@@ -126,10 +126,10 @@ const CartPage = () => {
                     </div>
                     <div className="flex justify-center items-center rounded-lg">
                       <Button
-                        onClick={() => router.push("/pages/home")}
+                        onClick={() => router.push("/pages/checkout")}
                         className="bg-[#022452] px-8 py-5 "
                       >
-                        Start New Order
+                        Checkout
                       </Button>
                     </div>
                   </DialogDescription>
