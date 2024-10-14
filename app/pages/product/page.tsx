@@ -31,7 +31,7 @@ const HomePage = () => {
           <div className="flex justify-center items-center mb-8">
             <h4 className="font-playfair text-4xl">New Dishes</h4>
           </div>
-          <div className="flex justify-between items-center flex-wrap gap-4">
+          <div className="flex md:justify-between  justify-center items-center flex-wrap gap-4">
             {Data.map((item, index) => (
               <>
                 <div className="" key={index}>
