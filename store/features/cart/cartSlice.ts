@@ -12,6 +12,7 @@ export interface CartItem {
   name: string;
   image: ImageType;
   price: number;
+  quantity: number;
 }
 
 export interface CartState {
@@ -32,9 +33,23 @@ export const cartSlice = createSlice({
     remove: (state, action: PayloadAction<CartItem>) => {
       state.items = state.items.filter((item) => item.id !== action.payload.id);
     },
+    increament: (state, action: PayloadAction<string>) => {
+      const itemId = action.payload;
+      const item = state.items.find((item) => item.id === itemId);
+      if (item) {
+        item.quantity += 1;
+      }
+    },
+    decreament: (state, action: PayloadAction<string>) => {
+      const itemId = action.payload;
+      const item = state.items.find((item) => item.id === itemId);
+      if (item) {
+        item.quantity -= 1;
+      }
+    },
   },
 });
 
-export const { add, remove } = cartSlice.actions;
+export const { add, remove, increament, decreament } = cartSlice.actions;
 
 export default cartSlice.reducer;

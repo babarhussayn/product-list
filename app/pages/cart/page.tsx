@@ -2,7 +2,11 @@
 import React from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { Button } from "@/components/ui/button";
-import { remove } from "@/store/features/cart/cartSlice";
+import {
+  decreament,
+  increament,
+  remove,
+} from "@/store/features/cart/cartSlice";
 import { useRouter } from "next/navigation";
 
 import {
@@ -20,7 +24,10 @@ const CartPage = () => {
   const dispatch = useAppDispatch();
   const items = useAppSelector((state) => state.cart.items);
 
-  const totalPrice = items.reduce((acc, item) => acc + item.price, 0);
+  const totalPrice = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="w-full container mx-auto">
@@ -28,14 +35,28 @@ const CartPage = () => {
         {items.length > 0 ? (
           items.map((item, index) => (
             <div key={index} className="flex justify-center items-center ">
-              <div className="flex justify-between items-center w-[50%] bg-[#cfcccc] m-4 shadow-lg rounded-lg p-4">
+              <div className="flex justify-between items-center flex-col md:flex-row w-[50%] bg-[#cfcccc] m-4 shadow-lg rounded-lg p-4">
                 <div className="m-4">
                   <img src={item.image.thumbnail} alt={item.name} />
                 </div>
                 <div className="flex justify-center items-center">
-                  <Button className="bg-[#022452] m-2 text-lg">-</Button>
-                  <span className=" w-full">1</span>
-                  <Button className="bg-[#022452] m-2 text-lg">+</Button>
+                  <Button
+                    className="bg-[#022452] m-2 text-lg"
+                    onClick={() => {
+                      if (item.quantity > 1) dispatch(decreament(item.id));
+                    }}
+                  >
+                    -
+                  </Button>
+                  <span className=" w-full">{item.quantity}</span>
+                  <Button
+                    className="bg-[#022452] m-2 text-lg"
+                    onClick={() => {
+                      dispatch(increament(item.id));
+                    }}
+                  >
+                    +
+                  </Button>
                 </div>
                 <div className="p-6">
                   <h3 className="font-playfair font-bold text-xl">

@@ -79,3 +79,17 @@ body {
 .playfair {
   font-family: var(--font-playfair);
 }
+
+.smooth-right {
+  animation: updown 500ms ease;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateX(200px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
