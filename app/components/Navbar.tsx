@@ -22,14 +22,6 @@ const navbar: NavbarItem[] = [
     name: "Products",
     link: "/pages/product",
   },
-  {
-    name: "About",
-    link: "/pages/about",
-  },
-  {
-    name: "Services",
-    link: "/pages/services",
-  },
 ];
 
 const Navbar = () => {

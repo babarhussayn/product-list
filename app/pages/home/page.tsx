@@ -19,11 +19,11 @@ const HomePage = () => {
   const dispatch = useAppDispatch();
 
   const handleAddToCart = (product: Omit<CartItem, "quantity">) => {
-    const { id, name, image, price } = product; // Destructure the product details
+    const { id, name, image, price } = product;
     console.log(id, "add to cart");
 
     // Dispatch the action with quantity set to 1
-    dispatch(add({ id, name, image, price, quantity: 1 })); // Set default quantity
+    dispatch(add({ id, name, image, price, quantity: 0 }));
   };
   return (
     <>
