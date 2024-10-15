@@ -195,8 +195,8 @@ const CheckoutPage = () => {
                       </label>
                       <div className="flex items-center">
                         <button
-                          id="dropdown-phone-button-3"
-                          data-dropdown-toggle="dropdown-phone-3"
+                          // id="dropdown-phone-button-3"
+                          // data-dropdown-toggle="dropdown-phone-3"
                           className="z-10 inline-flex shrink-0 items-center rounded-s-lg border border-gray-300 bg-gray-100 px-4 py-2.5 text-center text-sm font-medium text-gray-900 hover:bg-gray-200 focus:outline-none focus:ring-4 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                           type="button"
                         >
@@ -777,7 +777,6 @@ const CheckoutPage = () => {
                             type="text"
                             id="phone-input"
                             className="z-20 block w-full rounded-e-lg border border-s-0 border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:border-s-gray-700  dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500"
-                            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                             placeholder="123-456-7890"
                             required
                           />
