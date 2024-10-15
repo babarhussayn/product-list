@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,14 +23,12 @@ const CartPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const items = useAppSelector((state) => state.cart.items);
+  const [quantity, setQuantity] = useState(1);
 
-  const totalPrice = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  const totalPrice = items.reduce((acc, item) => acc + item.price, 0);
 
   return (
-    <div className="w-full container mx-auto">
+    <div className="w-full container mx-auto min-h-screen">
       <div className="">
         {items.length > 0 ? (
           items.map((item, index) => (
@@ -48,7 +46,7 @@ const CartPage = () => {
                   >
                     -
                   </Button>
-                  <span className=" w-full">{item.quantity}</span>
+                  <span className=" w-full">{item.quantity || quantity}</span>
                   <Button
                     className="bg-[#022452] m-2 text-lg"
                     onClick={() => {

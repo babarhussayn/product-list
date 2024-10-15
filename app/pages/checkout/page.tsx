@@ -1,5 +1,6 @@
 "use client";
 import { useAppSelector } from "@/store/hooks";
+import { config } from "dotenv";
 import React from "react";
 
 const CheckoutPage = () => {
@@ -9,6 +10,21 @@ const CheckoutPage = () => {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
+  config();
+
+  // fetch("https://www.universal-tutorial.com/api/getaccesstoken", {
+  //   method: "GET",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //     email: process.env.NEXT_PUBLIC_USER_EMAIL,
+  //     api_token: process.env.NEXT_PUBLIC_API_TOKEN,
+  //   },
+  // })
+  //   .then((response) => response.json())
+  //   .then((data) => console.log(data.auth_token))
+  //   .catch((error) => console.error("Error:", error));
+
   return (
     <>
       <div>
