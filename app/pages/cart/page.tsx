@@ -23,10 +23,12 @@ const CartPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const items = useAppSelector((state) => state.cart.items);
-  // const [quantity, setQuantity] = useState(1);
 
   const quantity = 1;
-  const totalPrice = items.reduce((acc, item) => acc + item.price, 0);
+  const totalPrice = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
 
   return (
     <div className="w-full container mx-auto min-h-screen">
