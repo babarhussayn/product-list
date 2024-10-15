@@ -23,6 +23,7 @@ const CartPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
   const items = useAppSelector((state) => state.cart.items);
+  // const [quantity, setQuantity] = useState(1);
 
   const quantity = 1;
   const totalPrice = items.reduce(
