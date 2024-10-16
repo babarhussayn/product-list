@@ -1,7 +1,11 @@
 "use client";
 import { useAppSelector } from "@/store/hooks";
-import { config } from "dotenv";
-import React from "react";
+// import {
+//   PaymentElement,
+
+// } from "@stripe/react-stripe-js";
+
+// import React, { useEffect, useState } from "react";
 
 const CheckoutPage = () => {
   const items = useAppSelector((state) => state.cart.items);
@@ -10,8 +14,6 @@ const CheckoutPage = () => {
     (acc, item) => acc + item.price * item.quantity,
     0
   );
-
-  config();
 
   // fetch("https://www.universal-tutorial.com/api/getaccesstoken", {
   //   method: "GET",
@@ -25,11 +27,30 @@ const CheckoutPage = () => {
   //   .then((data) => console.log(data.auth_token))
   //   .catch((error) => console.error("Error:", error));
 
+  // const stripe = useStripe();
+  // const elements = useElements();
+  // const [clientSecret, setClientSecret] = useState("");
+
+  // useEffect(() => {
+  //   fetch("/api/create-payment-intent", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({}),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => setClientSecret(data.clientSecret));
+  // }, []);
   return (
     <>
+      {/* {clientSecret && <PaymentElement />} */}
       <div>
         <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
-          <form action="#" className="mx-auto max-w-screen-xl px-4 2xl:px-0">
+          <form
+            action="https://buy.stripe.com/test_aEU2b04Bi1xK0E0145"
+            className="mx-auto max-w-screen-xl px-4 2xl:px-0"
+          >
             <ol className="items-center flex w-full max-w-2xl text-center text-sm font-medium text-gray-500 dark:text-gray-400 sm:text-base">
               <li className="after:border-1 flex items-center text-primary-700 after:mx-6 after:hidden after:h-1 after:w-full after:border-b after:border-gray-200 dark:text-primary-500 dark:after:border-gray-700 sm:after:inline-block sm:after:content-[''] md:w-full xl:after:mx-10">
                 <span className="flex items-center after:mx-2 after:text-gray-200 after:content-['/'] dark:after:text-gray-500 sm:after:hidden">
